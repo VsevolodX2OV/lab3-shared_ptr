@@ -6,18 +6,18 @@
 TEST(Example, EmptyTest) {
   EXPECT_TRUE(true);
 }
-TEST(Test, Zerro) {
+TEST(Test, ZerroLink) {
   SharedPtr<int> sp;
   EXPECT_EQ((sp),0);
 }
-TEST(Test, UseCount) {
+TEST(Test, UseLink) {
   int val = 5;
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
   SharedPtr<int> sp3(sp2);
   EXPECT_EQ(sp1.use_count(),3);
 }
-TEST(Test, Clas_Strelka) {
+TEST(Test, ValuesFromClass) {
   class Values{
    public:
     int val;
@@ -27,7 +27,7 @@ TEST(Test, Clas_Strelka) {
   SharedPtr<Values> sp5(&val1);
   EXPECT_EQ(sp5->val,20);
 }
-TEST(Test, Zvezda) {
+TEST(Test, TestWithValues) {
   int val = 5, val2 = 30;
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
@@ -38,7 +38,7 @@ TEST(Test, Zvezda) {
   std::string stroka = "5 5 5 30";
   EXPECT_EQ(str.str(), stroka);
 }
-TEST(Test, Get) {
+TEST(Test, TestGet) {
   int val = 5, val2 = 30;
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
@@ -49,7 +49,7 @@ TEST(Test, Get) {
   std::string stroka = "5 5 5 30";
   EXPECT_EQ(str.str(), stroka);
 }
-TEST(Test, Reset) {
+TEST(Test, TestReset) {
   int val = 5, val2 =30;
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
@@ -61,7 +61,7 @@ TEST(Test, Reset) {
   std::string stroka = "0 30";
   EXPECT_EQ(str.str(), stroka);
 }
-TEST(Test, Swap) {
+TEST(Test, TestSwap) {
   int val = 5, val2 = 30;
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
