@@ -1,4 +1,4 @@
-// Copyright by Enigma
+//Copyright 2021 by Winter Solider
 
 #include <iostream>
 
@@ -9,7 +9,6 @@ int main() {
   std::cout << "Test!"<<"\n";
 
   int *p = new int{5};
-
 
   SharedPtr sh1(p);
 

@@ -1,4 +1,5 @@
-// Copyright by Enigma
+//Copyright 2021 by Winter Solider
+
 #ifndef INCLUDE_PTR_HPP_
 #define INCLUDE_PTR_HPP_
 

@@ -1,4 +1,4 @@
-// Copyright by Enigma
+//Copyright 2021 by Winter Solider
 
 #include "ptr.hpp"
 #include <stdexcept>
