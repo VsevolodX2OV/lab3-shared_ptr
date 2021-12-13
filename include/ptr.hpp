@@ -15,26 +15,26 @@ template <typename T>
 class SharedPtr {
  public:
   SharedPtr(){
-    this->ptr = nullptr;
-    this->counter = new std::atomic_uint;
+    ptr = nullptr;
+    counter = new std::atomic_uint;
     *this->counter = 0;
   }
 
   explicit SharedPtr(T* pointer){
-    this->counter = new std::atomic_uint;
-    this->ptr = pointer;
+    counter = new std::atomic_uint;
+    ptr = pointer;
     *this->counter = 1;
   }
 
   SharedPtr(const SharedPtr& r){
-    this->ptr = r.ptr;
-    this->counter = r.counter;
+    ptr = r.ptr;
+    counter = r.counter;
     (*this->counter)++;
   }
 
   SharedPtr(SharedPtr&& r){
-    this->ptr = std::move(r.ptr);
-    this->counter = std::move(r.counter);
+    ptr = std::move(r.ptr);
+    counter = std::move(r.counter);
   }
 
   ~SharedPtr(){
@@ -52,8 +52,8 @@ class SharedPtr {
     {
       (*this->counter)--;
     }
-    this->ptr = r.ptr;
-    this->counter = r.counter;
+    ptr = r.ptr;
+    counter = r.counter;
     (*this->counter)++;
     return *this;
   }
@@ -63,8 +63,8 @@ class SharedPtr {
     {
       (*this->counter)--;
     }
-    this->ptr = std::move(r.ptr);
-    this->counter = std::move(r.counter);
+    ptr = std::move(r.ptr);
+    counter = std::move(r.counter);
     return *this;
   }
 
@@ -81,7 +81,7 @@ class SharedPtr {
   }
 
   auto get() -> T*{
-    return this->ptr;
+    return ptr;
   }
 
   void reset(){
@@ -91,8 +91,8 @@ class SharedPtr {
     } else {
       delete this->counter;
     }
-    this->ptr = nullptr;
-    this->counter = new std::atomic_uint;
+    ptr = nullptr;
+    counter = new std::atomic_uint;
     *this->counter = 0;
   }
 
@@ -103,22 +103,22 @@ class SharedPtr {
     } else {
       delete this->counter;
     }
-    this->ptr = pointer;
-    this->counter = new std::atomic_uint;
+    ptr = pointer;
+    counter = new std::atomic_uint;
     *this->counter = 1;
   }
 
   void swapPtr(SharedPtr& r){
-    T* temp1 = this->ptr;
+    T* temp1 = ptr;
     std::atomic_uint* temp2 = this->counter;
-    this->ptr = r.ptr;
-    this->counter = r.counter;
+    ptr = r.ptr;
+    counter = r.counter;
     r.ptr = temp1;
     r.counter = temp2;
   }
 
   auto use_count() const -> size_t{
-    if (this->counter == nullptr)
+    if (counter == nullptr)
     {
       return 0;
     } else {
