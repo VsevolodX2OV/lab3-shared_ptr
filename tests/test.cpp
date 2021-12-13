@@ -10,7 +10,7 @@ TEST(Test, ZerroLink) {
   SharedPtr<int> sp;
   EXPECT_EQ((sp),0);
 }
-TEST(Test, UseLink) {
+TEST(Test, UseLinks) {
   int val = 5;
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
